@@ -1,0 +1,15 @@
+server:
+  port: ${APP_SERVER_PORT:8080}
+logging:
+  level:
+    root: ERROR
+    com.poc.javaspringboot: DEBUG
+    org.springframework.web: DEBUG
+spring:
+  cloud:
+    stream:
+      bindings:
+        supply-out-0:
+          destination: ${EVENTHUB_NAME}
+      function:
+        definition: producer;

@@ -1,0 +1,25 @@
+server:
+  port: ${APP_SERVER_PORT:8080}
+
+logging:
+  level:
+    root: INFO
+    com.poc.mamadou.demo: DEBUG
+    org.springframework.web: DEBUG
+
+spring:
+  profiles:
+    active: ${ACTIVE_PROFILE:}
+  cloud:
+    azure:
+      eventhubs:
+        connection-string: ${EVENTHUB_CONNECTION_STRING}
+        processor:
+          checkpoint-store:
+            account-name: ${EVENTHUB_STORAGE_ACCOUNT_NAME}
+            account-key: ${EVENTHUB_STORAGE_ACCOUNT_KEY}
+            container-name: ${EVENTHUB_STORAGE_ACCOUNT_CONTAINER_NAME:default-container}
+    stream:
+      poller:
+        initial-delay: 0
+        fixed-delay: 1000

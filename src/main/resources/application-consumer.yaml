@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        consume-in-0:
+          destination: ${EVENTHUB_NAME}
+          group: ${EVENTHUB_CONSUMER_GROUP_NAME:"$Default"}
+      eventhubs:
+        bindings:
+          consume-in-0:
+            consumer:
+              checkpoint:
+                mode: MANUAL
+      function:
+        definition: consumer;
